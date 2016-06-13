@@ -24,7 +24,14 @@ class Component implements ComponentInterface
      */
     protected $servicesConfig = [
         'Controllers' => 'Es\Controllers\Controllers',
-        //
+    ];
+
+    /**
+     * The configuration of listeners.
+     *
+     * @var array
+     */
+    protected $listenersConfig = [
         'Es.Controllers.Listener.ConfigureControllersListener' => 'Es\Controllers\Listener\ConfigureControllersListener',
     ];
 
@@ -67,6 +74,16 @@ class Component implements ComponentInterface
     public function getServicesConfig()
     {
         return $this->servicesConfig;
+    }
+
+    /**
+     * Gets the configuration of listeners.
+     *
+     * @return array The configuration of listeners
+     */
+    public function getListenersConfig()
+    {
+        return $this->listenersConfig;
     }
 
     /**

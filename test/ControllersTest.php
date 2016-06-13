@@ -74,8 +74,8 @@ class ControllersTest extends \PHPUnit_Framework_TestCase
 
     public function testExteptionClassWhenControllerNotFound()
     {
-        $plugins = new Controllers();
+        $controllers = new Controllers();
         $this->setExpectedException(ControllerNotFoundException::CLASS);
-        $plugins->get('foo');
+        $controllers->get('foo');
     }
 }
