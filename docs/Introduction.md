@@ -22,7 +22,7 @@ project/
 The file `project/module/ExampleModule/config/system.config.php`:
 ```
 return [
-    'controllers' => require __DIR__ . DIRECTORY_SEPARATOR . 'controllers.config.php',
+    'controllers' => require 'controllers.config.php',
 ];
 ```
 
@@ -30,7 +30,7 @@ The file `project/module/ExampleModule/config/controllers.config.php`:
 ```
 return [
     'ExampleModule.Controller.Index' => 'ExampleModule\Controller\IndexController',
-    'ExampleModule.Controller.Bar' => 'ExampleModule\Controller\BarController',
+    'ExampleModule.Controller.Bar'   => 'ExampleModule\Controller\BarController',
     // ...
 ];
 ``` 
