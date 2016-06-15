@@ -9,83 +9,17 @@
  */
 namespace Es\Controllers\Listener;
 
+use Es\Controllers\ControllersTrait;
 use Es\Modules\ModulesEvent;
-use Es\Mvc\ControllersInterface;
 use Es\Services\ServicesTrait;
-use Es\System\ConfigInterface;
+use Es\System\ConfigTrait;
 
 /**
  * Configures the system controllers.
  */
 class ConfigureControllersListener
 {
-    use ServicesTrait;
-
-    /**
-     * The system configuration.
-     *
-     * @var \Es\System\Config
-     */
-    protected $config;
-
-    /**
-     * The system controllers.
-     *
-     * @var Es\Mvc\ControllersInterface
-     */
-    protected $controllers;
-
-    /**
-     * Sets the system configuration.
-     *
-     * @param \Es\System\ConfigInterface $config The system configuration
-     */
-    public function setConfig(ConfigInterface $config)
-    {
-        $this->config = $config;
-    }
-
-    /**
-     * Gets the system configuration.
-     *
-     * @return \Es\System\Config The system configuration
-     */
-    public function getConfig()
-    {
-        if (! $this->config) {
-            $services = $this->getServices();
-            $config   = $services->get('Config');
-            $this->setConfig($config);
-        }
-
-        return $this->config;
-    }
-
-    /**
-     * Sets the controllers.
-     *
-     * @param \Es\Mvc\ControllersInterface $controllers The controllers
-     */
-    public function setControllers(ControllersInterface $controllers)
-    {
-        $this->controllers = $controllers;
-    }
-
-    /**
-     * Gets the controllers.
-     *
-     * @return \Es\Mvc\ControllersInterface The controllers
-     */
-    public function getControllers()
-    {
-        if (! $this->controllers) {
-            $services    = $this->getServices();
-            $controllers = $services->get('Controllers');
-            $this->setControllers($controllers);
-        }
-
-        return $this->controllers;
-    }
+    use ConfigTrait, ControllersTrait, ServicesTrait;
 
     /**
      * Configures the system controllers.
@@ -96,10 +30,9 @@ class ConfigureControllersListener
     {
         $controllers = $this->getControllers();
         $config      = $this->getConfig();
-        if (! isset($config['controllers'])) {
-            return;
+        if (isset($config['controllers'])) {
+            $controllersConfig = (array) $config['controllers'];
+            $controllers->add($controllersConfig);
         }
-        $controllersConfig = (array) $config['controllers'];
-        $controllers->add($controllersConfig);
     }
 }
