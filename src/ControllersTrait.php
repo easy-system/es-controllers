@@ -13,7 +13,7 @@ use Es\Mvc\ControllersInterface;
 use Es\Services\Provider;
 
 /**
- * The recommended way to interact with controllers.
+ * The accessors of Controllers.
  */
 trait ControllersTrait
 {
