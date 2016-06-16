@@ -11,7 +11,6 @@ namespace Es\Controllers\Listener;
 
 use Es\Controllers\ControllersTrait;
 use Es\Modules\ModulesEvent;
-use Es\Services\ServicesTrait;
 use Es\System\ConfigTrait;
 
 /**
@@ -19,7 +18,7 @@ use Es\System\ConfigTrait;
  */
 class ConfigureControllersListener
 {
-    use ConfigTrait, ControllersTrait, ServicesTrait;
+    use ConfigTrait, ControllersTrait;
 
     /**
      * Configures the system controllers.
